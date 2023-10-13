@@ -11,3 +11,10 @@ class OnlinearticlesItem(scrapy.Item):
     name = scrapy.Field()
     href = scrapy.Field()
     author = scrapy.Field()
+    rank = scrapy.Field()
+    desc = scrapy.Field()
+
+
+
+class ArticleContentItem(scrapy.Item):
+    content = scrapy.Field()

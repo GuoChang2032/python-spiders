@@ -7,7 +7,8 @@ from scrapy import signals
 
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
-
+from .settings import USER_AGENT
+import random
 
 class OnlinearticlesSpiderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
@@ -78,8 +79,10 @@ class OnlinearticlesDownloaderMiddleware:
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
+        ua = random.choice(USER_AGENT)
+        request.headers['User-Agent'] = ua
         return None
-
+    
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.
 
